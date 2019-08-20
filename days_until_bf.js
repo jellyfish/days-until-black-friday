@@ -4,7 +4,7 @@ var days_to_display = null;
 var displaying_weekdays = false;
 
 function toggleCountMethod() {
-	if (displaying_weekdays) {
+	if (!displaying_weekdays) {
 		setDisplay(countWeekDays())
 		document.getElementById("days_until").innerHTML = "weekdays until Black Friday"
 	} else {
