@@ -4,13 +4,7 @@ var days_to_display = null;
 var displaying_weekdays = false;
 
 function toggleCountMethod() {
-	if (!displaying_weekdays) {
-		setDisplay(countWeekDays())
-		document.getElementById("days_until").innerHTML = "weekdays until Black Friday"
-	} else {
-		setDisplay(countDays())
-		document.getElementById("days_until").innerHTML = "days until Black Friday"
-	}
+	displaying_weekdays ? displayDays() : displayWeekdays();
 	displaying_weekdays = !displaying_weekdays
 }
 
@@ -19,15 +13,24 @@ function countDays() {
     return Math.ceil(difference_in_s / seconds_in_a_day);
 }
 
-function countWeekDays() {
-	return Math.ceil(countDays() * 5 / 7)
+function displayDays() {
+	document.getElementById("countdown").innerHTML = countDays();
+	document.getElementById("days_until").innerHTML = "days until Black Friday";
 }
 
-function setDisplay(text) {
-	document.getElementById("countdown").innerHTML = text
+function countWeekDays() {
+	return Math.ceil(countDays() * 5 / 7);
+}
+
+function displayWeekdays() {
+	document.getElementById("countdown").innerHTML = countWeekDays();
+	document.getElementById("days_until").innerHTML = "weekdays until Black Friday";
+}
+
+function resetDisplay() {
+	displaying_weekdays ? displayWeekdays() : displayDays();
 }
 
 window.onload = function main() {
-	days_to_display = countDays();
-	setInterval(setDisplay(days_to_display), seconds_in_a_day/24);
+	setInterval(resetDisplay(), seconds_in_a_day/24);
 }
