@@ -1,5 +1,6 @@
 <html>
     <head>
+        <meta charset="utf-8"/>
         <link rel="stylesheet" href="style.css">
         <script type="text/javascript" src="days_until_bf.js"></script>
         <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
@@ -10,8 +11,8 @@
         <meta name="theme-color" content="#ffffff">
     </head>
     <body>
-        <h1 id="days_until"></h1>
-        <p>days until Black Friday</p>
+        <h1 id="countdown" onclick="toggleCountMethod()"></h1>
+        <p id="days_until">days until Black Friday</p>
 
         <div class="promo" style="display: none;">
             <p>Can't wait? <a href="https://ilovebfcm.com">Grab some BFCM merch</a> to scratch that itch.</p>
