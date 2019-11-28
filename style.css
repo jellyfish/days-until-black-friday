@@ -1,3 +1,7 @@
+::selection {
+  background-color: transparent;
+}
+
 html {
   /* Load system fonts */
   font-family: -apple-system, BlinkMacSystemFont, San Francisco, Roboto, Segoe
@@ -20,12 +24,18 @@ body {
 
 h1 {
     font-size: 40vw;
+    vertical-align: middle;
     margin: 0;
 }
 
 p {
     font-size: 2vw;
     margin: 0;
+}
+
+canvas {
+  display: block;
+  margin: -8px;
 }
 
 .promo {
@@ -50,4 +60,13 @@ p {
 a:link, a:visited{
     color: #5C6AC4;
     text-decoration: none;
+}
+
+.its_black_friday {
+  padding-top: 20vh;
+  display: block;
+  position: absolute;
+  top: 0px;
+  color: #efefef;
+  font-size: 16vw;
 }
