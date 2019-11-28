@@ -50,6 +50,7 @@ function resetDisplay() {
 		document.getElementById("days_until").style.display = "none"
 	} else {
 		displaying_weekdays ? displayWeekdays() : displayDays();
+		document.getElementById("canvas").style.display = "none"
 	}
 }
 
