@@ -15,7 +15,17 @@ function today_is_black_friday() {
 	return above_lower_bound && below_upper_bound;
 }
 
+function today_is_cyber_monday() {
+	now = Date.now();
+	above_lower_bound = cyber_monday < now;
+	below_upper_bound = now < cyber_monday_upper;
+	return above_lower_bound && below_upper_bound;
+}
+
 function toggleCountMethod() {
+	if (today_is_black_friday()) {
+		return;
+	}
 	displaying_weekdays ? displayDays() : displayWeekdays();
 	displaying_weekdays = !displaying_weekdays;
 }
@@ -46,6 +56,14 @@ function resetDisplay() {
 		element = document.getElementById("countdown");
 		element.classList.add("its_black_friday");
 		element.innerHTML = "It's Black Friday!";
+
+		document.getElementById("days_until").style.display = "none"
+	} else if (today_is_cyber_monday()) {
+		jack_into_the_matrix();
+
+		element = document.getElementById("countdown");
+		element.classList.add("its_cyber_monday");
+		element.innerHTML = "It's Cyber Monday!";
 
 		document.getElementById("days_until").style.display = "none"
 	} else {

@@ -63,10 +63,20 @@ a:link, a:visited{
 }
 
 .its_black_friday {
-  padding-top: 20vh;
+  padding-top: 19vh;
   display: block;
   position: absolute;
   top: 0px;
   color: #efefef;
   font-size: 16vw;
+}
+
+.its_cyber_monday {
+  padding-top: 19vh;
+  display: block;
+  position: absolute;
+  top: 0px;
+  color: #00ff00;
+  font-size: 16vw;
+  font-family: 'Share Tech Mono', monospace;
 }
