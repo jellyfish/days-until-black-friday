@@ -4,7 +4,6 @@ function canvasSupport(e) {
 
 function jack_into_the_matrix() {
 	var canvas = document.getElementById('canvas');
-	canvas.style.display = "inline"
 	document.getElementById('countdown').style.color = '#00ff00';
 	document.getElementById('days_until').style.color = '#00ff00';
 
@@ -16,6 +15,13 @@ function jack_into_the_matrix() {
 	var w = canvas.width = window.innerWidth;
 	var h = canvas.height = window.innerHeight;
 	var yPositions = Array(300).join(0).split('');
+
+	// resize
+	window.onresize = function() {
+		w = canvas.width = window.innerWidth;
+		h = canvas.height = window.innerHeight;
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+	};
 
 	function runMatrix() {
 		if (typeof Game_Interval != 'undefined') clearInterval(Game_interval);

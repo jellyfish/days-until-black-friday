@@ -58,30 +58,28 @@ function displayDaysUntil(day, only_weekdays) {
 function resetDisplay() {
 
 	allow_toggle = false;
+	countdown_element = document.getElementById("countdown");
+	sub_text_element = document.getElementById("days_until")
 	if (today_is_black_friday()) {
 		launch_fireworks();
-		element = document.getElementById("countdown");
-		element.classList.add("its_black_friday");
-		element.innerHTML = "It’s Black Friday!";
-		document.getElementById("days_until").style.display = "none"
+		countdown_element.classList.add("its_black_friday");
+		countdown_element.innerHTML = "It’s Black Friday!";
+		sub_text_element.style.display = "none"
 	}
 	else if (countdown_to_cyber_monday()) {
-		document.getElementById("canvas").style.display = "none"
 		displayDaysUntil(cyber_monday, displaying_weekdays)
-		document.getElementById("countdown").classList.add("countdown");
+		countdown_element.classList.add("countdown");
 	}
 	else if (today_is_cyber_monday()) {
 		jack_into_the_matrix();
-		element = document.getElementById("countdown");
-		element.classList.add("its_cyber_monday");
-		element.innerHTML = "It’s Cyber Monday!";
-		document.getElementById("days_until").style.display = "none"
+		countdown_element.classList.add("its_cyber_monday");
+		countdown_element.innerHTML = "It’s Cyber Monday!";
+		sub_text_element.style.display = "none"
 	}
 	else {
 		allow_toggle = true;
 		displayDaysUntil(black_friday, displaying_weekdays)
-		document.getElementById("canvas").style.display = "none"
-		document.getElementById("countdown").classList.add("countdown");
+		countdown_element.classList.add("countdown");
 	}
 }
 

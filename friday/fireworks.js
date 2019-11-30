@@ -1,7 +1,6 @@
 // Credit Mahesh Ambure https://codepen.io/maheshambure21/pen/yLLXbmX
 function launch_fireworks() {
 	var canvas = document.getElementById("canvas");
-	canvas.style.display = "inline"
 	document.getElementById('countdown').style.color = '#efefef';
 	document.getElementById('days_until').style.color = '#efefef';
 
@@ -586,10 +585,6 @@ function launch_fireworks() {
 		for (var i = 0; i < listSpecial.length; i++) {
 			var special = listSpecial[i];
 			ctx.globalAlpha = special.alpha;
-			// ctx.beginPath();
-			// ctx.arc(special.x, special.y, special.size, 0, Math.PI * 2);
-			// ctx.closePath();
-			// ctx.fill();
 			ctx.fillStyle = special.fill;
 			ctx.fillRect(special.x - special.size, special.y - special.size, special.size * 2, special.size *2);
 		}
@@ -597,10 +592,6 @@ function launch_fireworks() {
 		for (var i = 0; i < listSpark.length; i++) {
 			var spark = listSpark[i];
 			ctx.globalAlpha = spark.alpha;
-			// ctx.beginPath();
-			// ctx.arc(spark.x, spark.y, spark.size, 0, Math.PI * 2);
-			// ctx.closePath();
-			// ctx.fill();
 			ctx.fillStyle = spark.fill;
 			ctx.fillRect(spark.x - spark.size, spark.y - spark.size, spark.size * 2, spark.size *2);
 		}
