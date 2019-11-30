@@ -1,73 +1,84 @@
 var black_friday = new Date('November 29, 2019 00:00:00');
-var black_friday_upper =  new Date('November 29, 2019 23:59:59');
+var black_friday_end =  new Date('November 29, 2019 23:59:59');
 
 var cyber_monday = new Date('December 02, 2019 00:00:00');
-var cyber_monday_upper = new Date('December 02, 2019 23:59:59');
+var cyber_monday_end = new Date('December 02, 2019 23:59:59');
 
 var seconds_in_a_day = 86400;
 var days_to_display = null;
 var displaying_weekdays = false;
 
-function today_is_black_friday() {
-	now = Date.now();
-	above_lower_bound = black_friday < now;
-	below_upper_bound = now < black_friday_upper;
-	return above_lower_bound && below_upper_bound;
-}
-
-function today_is_cyber_monday() {
-	now = Date.now();
-	above_lower_bound = cyber_monday < now;
-	below_upper_bound = now < cyber_monday_upper;
-	return above_lower_bound && below_upper_bound;
-}
+var allow_toggle = false;
 
 function toggleCountMethod() {
-	if (today_is_black_friday()) {
+	if (!allow_toggle) {
 		return;
 	}
-	displaying_weekdays ? displayDays() : displayWeekdays();
+	displayDaysUntil(black_friday, displaying_weekdays)
 	displaying_weekdays = !displaying_weekdays;
 }
 
-function countDays() {
-	difference_in_s = (black_friday - Date.now()) / 1000;
+function time_is_between_datetimes(d1, d2) {
+	now = Date.now();
+	above_lower_bound = d1 < now;
+	below_upper_bound = now < d2;
+	return above_lower_bound && below_upper_bound;
+}
+
+function today_is_black_friday() {
+	return time_is_between_datetimes(black_friday, black_friday_end)
+}
+
+function countdown_to_cyber_monday() {
+	return time_is_between_datetimes(black_friday_end, cyber_monday)
+}
+
+function today_is_cyber_monday() {
+	return time_is_between_datetimes(cyber_monday, cyber_monday_end)
+}
+
+function countDaysUntil(day) {
+	difference_in_s = (day - Date.now()) / 1000;
 	return Math.ceil(difference_in_s / seconds_in_a_day);
 }
 
-function displayDays() {
-	document.getElementById("countdown").innerHTML = countDays();
-	document.getElementById("days_until").innerHTML = "days until Black Friday";
+function countWeekDaysUntil(day) {
+	return Math.ceil(countDaysUntil(day) * 5 / 7);
 }
 
-function countWeekDays() {
-	return Math.ceil(countDays() * 5 / 7);
-}
-
-function displayWeekdays() {
-	document.getElementById("countdown").innerHTML = countWeekDays();
-	document.getElementById("days_until").innerHTML = "weekdays until Black Friday";
+function displayDaysUntil(day, only_weekdays) {
+	count = only_weekdays ? countWeekDaysUntil(day) : countDaysUntil(day)
+	document.getElementById("countdown").innerHTML = count;
+	unit_text = only_weekdays ? "weekday" : "day"
+	plurality = count == 1 ? "" : "s"
+	day_text = day == cyber_monday ? "Cyber Monday" : "Black Friday"
+	document.getElementById("days_until").innerHTML = `${unit_text}${plurality} until ${day_text}`;
 }
 
 function resetDisplay() {
+
+	allow_toggle = false;
 	if (today_is_black_friday()) {
 		launch_fireworks();
-
 		element = document.getElementById("countdown");
 		element.classList.add("its_black_friday");
 		element.innerHTML = "It's Black Friday!";
-
 		document.getElementById("days_until").style.display = "none"
-	} else if (today_is_cyber_monday()) {
+	}
+	else if (countdown_to_cyber_monday()) {
+		document.getElementById("canvas").style.display = "none"
+		displayDaysUntil(cyber_monday, displaying_weekdays)
+	}
+	else if (today_is_cyber_monday()) {
 		jack_into_the_matrix();
-
 		element = document.getElementById("countdown");
 		element.classList.add("its_cyber_monday");
 		element.innerHTML = "It's Cyber Monday!";
-
 		document.getElementById("days_until").style.display = "none"
-	} else {
-		displaying_weekdays ? displayWeekdays() : displayDays();
+	}
+	else {
+		allow_toggle = true;
+		displayDaysUntil(black_friday, displaying_weekdays)
 		document.getElementById("canvas").style.display = "none"
 	}
 }
