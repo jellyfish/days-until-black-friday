@@ -4,6 +4,9 @@ function canvasSupport(e) {
 
 function jack_into_the_matrix() {
 	var canvas = document.getElementById('canvas');
+	canvas.style.display = "inline"
+	document.getElementById('countdown').style.color = '#00ff00';
+	document.getElementById('days_until').style.color = '#00ff00';
 
 	if (!canvasSupport(canvas)) {
 		return; 

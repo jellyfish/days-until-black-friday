@@ -18,24 +18,22 @@ html {
   text-rendering: optimizeLegibility;
 }
 
-body {
-    text-align: center;
+html, body, div, canvas {
+    margin: 0;
+    padding: 0;
 }
 
-h1 {
-    font-size: 40vw;
-    vertical-align: middle;
-    margin: 0;
+body {
+  text-align: center;
 }
 
 p {
-    font-size: 2vw;
-    margin: 0;
+    font-size: 4vw;
+    top: 30vh !important;
 }
 
 canvas {
   display: block;
-  margin: -8px;
 }
 
 .promo {
@@ -62,20 +60,31 @@ a:link, a:visited{
     text-decoration: none;
 }
 
-.its_black_friday {
-  padding-top: 19vh;
+.center {
+  width: 100%;
+  margin: 50vh auto 0;
+  transform: translateY(-50%);
+  top: 0px;
   display: block;
   position: absolute;
-  top: 0px;
+  transition: color 9s;
+}
+
+.countdown {
+  display: block;
+  position: absolute;
+  color: black;
+  font-size: 40vw;
+
+  padding-bottom: 15vh;
+}
+
+.its_black_friday {
   color: #efefef;
   font-size: 16vw;
 }
 
 .its_cyber_monday {
-  padding-top: 19vh;
-  display: block;
-  position: absolute;
-  top: 0px;
   color: #00ff00;
   font-size: 16vw;
   font-family: 'Share Tech Mono', monospace;

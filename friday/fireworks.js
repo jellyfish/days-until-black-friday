@@ -1,6 +1,10 @@
 // Credit Mahesh Ambure https://codepen.io/maheshambure21/pen/yLLXbmX
 function launch_fireworks() {
 	var canvas = document.getElementById("canvas");
+	canvas.style.display = "inline"
+	document.getElementById('countdown').style.color = '#efefef';
+	document.getElementById('days_until').style.color = '#efefef';
+
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
 	var ctx = canvas.getContext('2d');
