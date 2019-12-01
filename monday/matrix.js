@@ -31,19 +31,20 @@ function jack_into_the_matrix() {
 	function drawScreen () {
 		ctx.fillStyle = 'rgba(0,0,0,.05)';
 		ctx.fillRect(0, 0, w, h);
-		ctx.fillStyle = '#0f0';
-		ctx.font = '10px Georgia';
+		ctx.fillStyle = '#0b0';
+		px = 10
+		ctx.font = `${px}px Georgia`;
 		yPositions.map(function(y, index) {
 			char_code_start = 19984 // 丐 http://www.rikai.com/library/kanjitables/kanji_codes.unicode.shtml
 			char_code_range = 80 // Choose from the next 80 chars
 			text = String.fromCharCode(char_code_start + Math.random() * char_code_range);
-			x = (index * 10) + 10;
+			x = (index * px);
 			ctx.fillText(text, x, y);
 
-			if (y > (h/2) + Math.random() * 1e4) {
+			if (y > (h * 0.6) + Math.random() * (h*10)) {
 				yPositions[index] = 0; // Reset
 			} else {
-				yPositions[index] = y + 10; // move it down the canvas
+				yPositions[index] = y + px; // move it down the canvas
 			}
 		})
 	}
