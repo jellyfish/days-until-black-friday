@@ -33,7 +33,7 @@ function jack_into_the_matrix() {
 		ctx.fillRect(0, 0, w, h);
 		ctx.fillStyle = '#0b0';
 		px = 10
-		ctx.font = `${px}px Georgia`;
+		ctx.font = `${px}px Noto Sans JP`;
 		yPositions.map(function(y, index) {
 			char_code_start = 19984 // 丐 http://www.rikai.com/library/kanjitables/kanji_codes.unicode.shtml
 			char_code_range = 80 // Choose from the next 80 chars
