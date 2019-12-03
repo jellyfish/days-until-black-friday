@@ -1,8 +1,8 @@
-var black_friday = new Date('November 29, 2019 00:00:00');
-var black_friday_end =  new Date('November 29, 2019 23:59:59');
+var black_friday = new Date('November 27, 2020 00:00:00');
+var black_friday_end =  new Date('November 27, 2020 23:59:59');
 
-var cyber_monday = new Date('December 02, 2019 00:00:00');
-var cyber_monday_end = new Date('December 02, 2019 23:59:59');
+var cyber_monday = new Date('November 30, 2020 00:00:00');
+var cyber_monday_end = new Date('November 30, 2020 23:59:59');
 
 var seconds_in_a_day = 86400;
 var days_to_display = null;
